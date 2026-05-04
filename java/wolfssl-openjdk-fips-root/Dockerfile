@@ -63,7 +63,8 @@ FROM builder AS wolfssl-builder
 # This bundle name can change depending on wolfCrypt FIPS OE
 RUN --mount=type=secret,id=wolfssl_pw \
     PW="$(cat /run/secrets/wolfssl_pw)" \
-    && curl -fLso /tmp/wolfssl-commercial.7z "https://www.wolfssl.com/comm/wolfssl/wolfssl-5.8.4-commercial-fips-v5.2.3.7z" \
+    && curl -fLso /tmp/wolfssl-commercial.7z "https://www.wolfssl.com/comm/wolfssl/wolfssl-5.9.1-commercial-fips-v5.2.3.7z" \
+    && echo "13280504dbfea0cb891404ef9ad4f2ee3ab02e0a327c80f93bc1f546224ef8db  /tmp/wolfssl-commercial.7z" | sha256sum -c - \
     && 7z x /tmp/wolfssl-commercial.7z -p"$PW" -o/build \
     && rm -f /tmp/wolfssl-commercial.7z \
     && ls -la /build/ \

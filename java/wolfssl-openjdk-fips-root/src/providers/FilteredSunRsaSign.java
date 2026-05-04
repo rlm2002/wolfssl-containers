@@ -35,8 +35,7 @@ import java.util.Set;
  * FilteredSunRsaSign is a custom security provider that filters out
  * non-cryptographic services from the original SunRsaSign provider.
  *
- * It retains only the services related to RSA (RSA and RSASSA-PSS) KeyFactory:
- *     - KeyFactory.RSA
+ * It retains only:
  *     - KeyFactory.RSASSA-PSS
  */
 public class FilteredSunRsaSign extends Provider {
@@ -97,7 +96,7 @@ public class FilteredSunRsaSign extends Provider {
 
         switch (type) {
             case "KeyFactory":
-                if (algo.equals("RSA") || algo.equals("RSASSA-PSS")) {
+                if (algo.equals("RSASSA-PSS")) {
                     return true;
                 }
                 break;

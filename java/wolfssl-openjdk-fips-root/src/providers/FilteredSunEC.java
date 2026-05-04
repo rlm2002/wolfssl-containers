@@ -35,11 +35,9 @@ import java.util.Set;
  * FilteredSunEC is a custom security provider that filters out
  * non-cryptographic services from the original SunEC provider.
  *
- * It retains only the services related to EC (Elliptic Curve)
- * AlgorithmParameters and KeyFactory:
+ * It retains only:
  *
  *     - AlgorithmParameters.EC
- *     - KeyFactory.EC.
  */
 public class FilteredSunEC extends Provider {
 
@@ -99,11 +97,6 @@ public class FilteredSunEC extends Provider {
 
         switch (type) {
             case "AlgorithmParameters":
-                if (algo.equals("EC")) {
-                    return true;
-                }
-                break;
-            case "KeyFactory":
                 if (algo.equals("EC")) {
                     return true;
                 }

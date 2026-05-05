@@ -35,7 +35,6 @@ import java.util.Set;
  * non-cryptographic services from the original SUN provider.
  *
  * It retains only the services:
- *     - CertPathBuilder.PKIX
  *     - CertStore.Collection
  *     - CertStore.com.sun.security.IndexedCollection
  *     - CertificateFactory.X.509
@@ -98,11 +97,6 @@ public class FilteredSun extends Provider {
         String algo = service.getAlgorithm();
 
         switch (type) {
-            case "CertPathBuilder":
-                if (algo.equals("PKIX")) {
-                    return true;
-                }
-                break;
             case "CertStore":
                 if (algo.equals("Collection") ||
                     algo.equals("com.sun.security.IndexedCollection")) {

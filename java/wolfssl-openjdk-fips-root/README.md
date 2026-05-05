@@ -110,14 +110,11 @@ The following list includes the services that are left exposed/available:
 
 **SunEC** (FilteredSunEC.java):
 - AlgorithmParameters (EC)
-- KeyFactory (EC)
 
 **SunRsaSign** (FilteredSunRsaSign.java):
-- KeyFactory (RSA)
 - KeyFactory (RSASSA-PSS)
 
 **SUN** (FilteredSun.java):
-- CertPathBuilder (PKIX)
 - CertStore (Collection)
 - CertStore (com.sun.security.IndexedCollection)
 - CertificateFactory (X.509)
@@ -524,13 +521,12 @@ docker run -e WOLFJCE_DEBUG=true \
 
 **ASN parsing error, invalid input (-140)** - This error has been observed
 when testing connections to `www.github.com:443`. This is an ASN decoding
-issue that exists in the wolfSSL 5.8.0 release, but is fixed in the 5.8.2
-release. There is not yet a FIPS 140-3 v5.2.3 release for wolfSSL 5.8.2, but
-will be soon.
+issue that affected wolfSSL 5.8.0 and was fixed in wolfSSL 5.8.2. Current
+builds of this container use wolfSSL 5.9.1 and are not affected.
 
 ## Version Information
 
-- **wolfSSL**: 5.8.0 Commercial FIPS v5.2.3
+- **wolfSSL**: 5.9.1 Commercial FIPS v5.2.3
 - **Base Image**: Root.io OpenJDK 19 (Debian Bookworm Slim)
 - **wolfcrypt-jni**: Master branch (GitHub)
 - **wolfssljni**: Master branch (GitHub)
